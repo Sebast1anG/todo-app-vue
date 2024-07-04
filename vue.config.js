@@ -1,4 +1,11 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+module.exports = {
+  transpileDependencies: [
+    'vuetify'
+  ],
+  pluginOptions: {
+    vuetify: {
+      importStrategy: 'auto',
+      styles: 'expose'
+    }
+  }
+}

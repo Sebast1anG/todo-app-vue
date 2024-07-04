@@ -1,0 +1,6 @@
+@import '~vuetify/styles/main.sass';
+@import '~@mdi/font/css/materialdesignicons.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
