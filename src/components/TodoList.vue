@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import TodoItem from './TodoItem.vue'
 
 export default {
@@ -28,6 +29,18 @@ export default {
     }
   },
   methods: {
+    async fetchTodos() {
+      try {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/todos')
+        this.todos = response.data.slice(0, 10).map(todo => ({
+          id: todo.id,
+          text: todo.title,
+          done: todo.completed,
+        }))
+      } catch (error) {
+        console.error('Failed to fetch todos:', error)
+      }
+    },
     addTodo() {
       if (this.newTodo.trim() === '') return
       this.todos.push({
@@ -47,5 +60,8 @@ export default {
       }
     },
   },
+  mounted() {
+    this.fetchTodos()
+  }
 }
 </script>

@@ -1,16 +1,18 @@
 <template>
   <v-list-item>
-    <v-list-item-action>
-      <v-checkbox v-model="localTodo.done" @change="toggleDone"></v-checkbox>
-    </v-list-item-action>
-    <v-list-item-content>
-      <v-list-item-title :class="{ done: localTodo.done }">{{ localTodo.text }}</v-list-item-title>
-    </v-list-item-content>
-    <v-list-item-action>
-      <v-btn icon @click="$emit('remove', localTodo.id)">
-        <v-icon>mdi-delete</v-icon>
-      </v-btn>
-    </v-list-item-action>
+    <v-row align="center" no-gutters>
+      <v-col cols="auto" class="checkbox-column">
+        <v-checkbox v-model="localTodo.done" @change="toggleDone"></v-checkbox>
+      </v-col>
+      <v-col cols="auto" class="flex-grow-1">
+        <v-list-item-title :class="{ done: localTodo.done }">{{ localTodo.text }}</v-list-item-title>
+      </v-col>
+      <v-col cols="auto">
+        <v-btn icon @click="$emit('remove', localTodo.id)">
+          <v-icon>mdi-delete</v-icon>
+        </v-btn>
+      </v-col>
+    </v-row>
   </v-list-item>
 </template>
 
@@ -37,4 +39,5 @@ export default {
 .done {
   text-decoration: line-through;
 }
+
 </style>
